@@ -93,6 +93,10 @@ function initListener() {
         element.classList.remove('selected')
       }
       )
+      document.querySelectorAll('.ranker').forEach(element => {
+        element.style.fontWeight = 'normal'
+      })
+
       element.classList.add('selected')
       const roll_no = element.querySelector('.roll').innerText
       const comments = await fetchCommentsJson(roll_no)
