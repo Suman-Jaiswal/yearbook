@@ -152,7 +152,20 @@ function renderStats() {
   yearBook.sort((a, b) => b.comments.length - a.comments.length)
   yearBook.slice(0, 10).forEach((student, index) => {
     const li = document.createElement('li')
+    li.style.cursor = 'pointer'
+    li.classList.add('ranker')
     li.innerHTML = `<div> ${index + 1}. ${student.name}</div>  <h3>${student.comments.length}</h3>`
+    li.onclick = async () => {
+      document.querySelectorAll('.student').forEach(element => {
+        element.classList.remove('selected')
+      })
+      document.querySelectorAll('.ranker').forEach(element => {
+        element.style.fontWeight = 'normal'
+      })
+      li.style.fontWeight = 'bold'
+      const comments = await fetchCommentsJson(student.roll_no)
+      renderComments(comments)
+    }
     ul.appendChild(li)
   })
 }

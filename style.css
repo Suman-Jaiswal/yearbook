@@ -169,6 +169,14 @@
   gap: 10px;
 }
 
+#total-comments {
+  font-weight: bold;
+}
+
+#total-students {
+  font-weight: bold;
+}
+
 
  li {
   display: flex;
