@@ -201,7 +201,7 @@ function renderStats() {
         element.style.fontWeight = 'normal'
       })
       li.style.fontWeight = 'bold'
-      const comments = await fetchCommentsJson(roll_no)
+      const comments = await fetchCommentsJson(element)
       renderComments(comments)
     }
     ul2.appendChild(li)
