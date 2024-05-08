@@ -14,7 +14,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 40px;
+  padding: 15px 30px;
 }
 
 .nav-title {
@@ -164,3 +164,37 @@
 
 
 
+@media screen and (max-width: 600px) {
+  .nav {
+    flex-direction: column;
+  }
+  .container {
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  .alpha-container {
+    width:  35%;
+    height: 35vh;
+    overflow-y: auto;
+    margin-left: 0;
+  }
+  .alphabet {
+    width: 30px;
+    height: 30px;
+  }
+  .students {
+    margin-left: 0;
+    margin-right: 0;
+    width: 60%;
+    height: 35vh;
+  }
+  .comments {
+    width: calc(100% - 20px);
+    height: 95vh;
+    margin-top: 30px;
+  }
+  .comment {
+    width: 100%;
+  }
+  
+}

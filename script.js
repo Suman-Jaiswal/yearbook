@@ -143,6 +143,7 @@ function initListener() {
   const studentElements = document.querySelectorAll('.student')
   studentElements.forEach(element => {
     element.addEventListener('click', async (event) => {
+      document.querySelector('.cur').scrollIntoView({ behavior: 'smooth', block: 'center' })
       studentElements.forEach(element => {
         element.classList.remove('selected')
       }
