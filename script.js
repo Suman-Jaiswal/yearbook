@@ -178,10 +178,12 @@ function renderStats() {
     const comments = yearBook[index].comments;
     for (let index2 = 0; index2 < comments.length; index2++) {
       const comment = comments[index2];
+      if (comment.roll_no === 'anonymous' || comment.roll_no === undefined) {
+        continue;
+      }
       rankers[comment.roll_no] = rankers[comment.roll_no] ? { name: comment.name, count: rankers[comment.roll_no].count + 1 } : { name: comment.name, count: 1 }
     }
   }
-
 
   const rankersRolls = Object.keys(rankers).sort((a, b) => rankers[b].count - rankers[a].count).slice(0, 10);
 
