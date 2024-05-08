@@ -36,7 +36,7 @@ async function main() {
   fs.writeFileSync('students.json', JSON.stringify(students))
   fs.writeFileSync('roll_numbers.json', JSON.stringify(roll_numbers))
   let counter = 0
-  const limit = 5
+  const limit = roll_numbers.length
   setInterval(async () => {
     if (counter < limit) {
       let comments_data = []
