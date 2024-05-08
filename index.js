@@ -52,6 +52,7 @@ async function main() {
         const comment = {
           comment: element.comment,
           name: element.name,
+          roll_no: element.id.roll_no
         }
         comments_data.push(comment)
       }
@@ -64,7 +65,7 @@ async function main() {
     } else {
       clearInterval()
     }
-  }, 200)
+  }, 100)
 
 
 }

@@ -54,15 +54,15 @@
 }
 
 .alphabet {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background-color: #333;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 
@@ -76,7 +76,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 282px;
-  height: calc(100vh - 100px);
+  height: 68vh;
   overflow-y: auto;
 }
 
@@ -131,9 +131,13 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   width: calc(100% - 564px);
-  height: calc(100vh - 100px);
+  height: calc(100vh - 105px);
   overflow-y: auto;
   justify-content: center;
+}
+
+.stat-name {
+  font-size: 14px;
 }
 
 .comment {
@@ -162,13 +166,26 @@
   line-height: 1.5;
 }
 
+.students-container {
+  height: calc(100vh - 105px);
+}
+
 .stats {
-  width: 100%;
+  width: 282px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: calc(100vh - 105px);
 }
 
+p{
+  font-size: 12px;
+  color: #666;
+}
 #total-comments {
   font-weight: bold;
 }
@@ -184,6 +201,16 @@
   margin: 10px 0;
  }
 
+ .close {
+  transform: scale(0);
+  position: absolute;
+ }
+
+ .stat-btn {
+  transform: scale(0);
+  position: absolute;
+ }
+
 
 @media screen and (max-width: 600px) {
   .nav {
@@ -195,19 +222,32 @@
   }
   .alpha-container {
     width:  35%;
-    height: 35vh;
+    height: 40vh;
     overflow-y: auto;
     margin-left: 0;
   }
   .alphabet {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
   }
   .students {
     margin-left: 0;
     margin-right: 0;
     width: 60%;
-    height: 35vh;
+    height: 40vh;
+    gap: 5px;
+    padding: 10px;
+  }
+  .student {
+    width: 100%;
+    padding: 10px;
+  }
+  .stat-btn {
+    transform: scale(1);
+    margin: 5px auto;
+    margin-top: 10px;
+    position: static;
+    display: block;
   }
   .comments {
     width: calc(100% - 20px);
@@ -216,6 +256,26 @@
   }
   .comment {
     width: 100%;
+  }
+  .students-container {
+    display: flex;
+    height: 40vh;
+    width: 100%;
+  }
+  .stats {
+    transform: scale(0);
+    position: absolute;
+    top: 0;
+    width: 95%;
+    height: auto;
+    background-color: #fff;
+  }
+
+  .close {
+    transform: scale(1);
+    position: static;
+    display: block;
+    margin: 5px auto;
   }
   
 }
