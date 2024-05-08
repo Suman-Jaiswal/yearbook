@@ -1,0 +1,166 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.nav {
+  background-color: #333;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 40px;
+}
+
+.nav-title {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-search {
+  float: right;
+}
+
+.search{
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.container {
+  display: flex;
+}
+.alpha-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 282px;
+  height: min-content;
+}
+
+.alphabet {
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+
+
+.students {
+  display: flex;
+ flex-direction: column;
+  gap: 10px;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 282px;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+.student {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  
+}
+
+.student.selected{
+  background-color: #f6f6f6;
+  color: #333;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.alphabet.selected {
+  background-color: #ccc;
+  color: #333;
+  font-weight: bold;
+  border: 1px solid #333;
+}
+
+.roll {
+  margin-top: 5px;
+  color: #333;
+  font-size: 12px;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.comments {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: calc(100% - 564px);
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+  justify-content: center;
+}
+
+.comment {
+  width: 40%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #f6f6f6;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.comment-name {
+  text-align: end;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+}
+
+.comment-text {
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: normal;
+  text-align: left;
+  line-height: 1.5;
+}
+
+
+
