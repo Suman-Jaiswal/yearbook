@@ -59,9 +59,6 @@ async function main() {
       fs.writeFileSync(`roll_${roll_no}.json`, JSON.stringify(comments_data))
       console.log(`${counter}. Comments for roll number ${roll_no} fetched`)
       counter++
-    } else if (counter === limit) {
-      getYearBook()
-      counter++
     } else {
       clearInterval()
     }
@@ -91,5 +88,6 @@ async function getYearBook() {
   console.log('Yearbook Updated');
 }
 
-main()
+// main()
+// getYearBook()
 

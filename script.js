@@ -155,6 +155,7 @@ function renderStats() {
   totalCommentsElement.innerText = totalComments
   const ul = document.querySelector('.top10-recieved')
   ul.innerHTML = ''
+  console.log(yearBook);
   yearBook.sort((a, b) => b.comments.length - a.comments.length)
   yearBook.slice(0, 10).forEach((student, index) => {
     const li = document.createElement('li')
