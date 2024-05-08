@@ -6,6 +6,10 @@ async function fetchCommentsJson(roll_no) {
   return await fetch(`./roll_${roll_no}.json`).then(response => response.json()).catch(error => [])
 }
 
+async function getYearBook() {
+  return await fetch('./yearbook.json').then(response => response.json()).catch(error => [])
+}
+
 function renderStudents(alphabet) {
   const studentsElement = document.querySelector('.students')
   studentsElement.innerHTML = ''
@@ -76,10 +80,7 @@ async function bootstrap() {
     })
   })
 
-  for (let index = 0; index < students.length; index++) {
-    const student = students[index];
-    await getYearBook(student)
-  }
+  yearBook = await getYearBook();
 
   console.log(yearBook);
   renderStats()
@@ -130,14 +131,7 @@ document.querySelector('.search').addEventListener('input', (event) => {
 })
 
 
-async function getYearBook(student) {
-  const roll_no = student.roll_no
-  const comments = await fetchCommentsJson(roll_no)
-  if (!comments || comments.length === 0) {
-    return
-  }
-  yearBook.push({ roll_no: roll_no, name: student.name, comments: comments })
-}
+
 
 function renderStats() {
   const totalStudentsElement = document.querySelector('#total-students')

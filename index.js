@@ -20,6 +20,8 @@ async function fetchComments(roll_no) {
   return await response.json()
 }
 
+
+
 async function main() {
   await fetchUsers()
 
@@ -34,9 +36,9 @@ async function main() {
   fs.writeFileSync('students.json', JSON.stringify(students))
   fs.writeFileSync('roll_numbers.json', JSON.stringify(roll_numbers))
   let counter = 0
-
+  const limit = 5
   setInterval(async () => {
-    if (counter < roll_numbers.length) {
+    if (counter < limit) {
       let comments_data = []
       const roll_no = roll_numbers[counter]
       let comments = await fetchComments(roll_no)
@@ -56,10 +58,36 @@ async function main() {
       fs.writeFileSync(`roll_${roll_no}.json`, JSON.stringify(comments_data))
       console.log(`${counter}. Comments for roll number ${roll_no} fetched`)
       counter++
+    } else if (counter === limit) {
+      getYearBook()
+      counter++
     } else {
       clearInterval()
     }
   }, 200)
+
+
+}
+
+function fetchCommentsJson(roll_no) {
+  try {
+    const comments = require(`./roll_${roll_no}.json`)
+    return comments
+  } catch (error) {
+    return []
+  }
+}
+async function getYearBook() {
+  const students = require('./students.json')
+  let yearBook = []
+  for (let index = 0; index < students.length; index++) {
+    const student = students[index];
+    const roll_no = student.roll_no
+    const comments = fetchCommentsJson(roll_no)
+    yearBook.push({ roll_no: roll_no, name: student.name, comments: comments })
+  }
+  fs.writeFileSync('yearbook.json', JSON.stringify(yearBook))
+  console.log('Yearbook Updated');
 }
 
 main()
