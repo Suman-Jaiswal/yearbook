@@ -1,6 +1,7 @@
 
 let students = []
 let yearBook = []
+let rankers = {}
 
 async function fetchCommentsJson(roll_no) {
   return await fetch(`./roll_${roll_no}.json`).then(response => response.json()).catch(error => [])
@@ -34,7 +35,7 @@ function renderStudents(alphabet) {
   initListener()
 }
 
-function renderComments(comments) {
+function renderComments(comments, name, roll_no) {
   const commentsElement = document.querySelector('.comments')
   commentsElement.innerHTML = ''
   if (!comments || comments.length === 0) {
@@ -42,6 +43,14 @@ function renderComments(comments) {
     return
   }
   comments.forEach(comment => {
+    const infoNameElement = document.querySelector('#info-name')
+    infoNameElement.innerText = name
+    const infoRollElement = document.querySelector('#info-roll')
+    infoRollElement.innerText = roll_no
+    const infoRecievedElement = document.querySelector('#info-comments-recieved')
+    infoRecievedElement.innerText = comments.length
+    const infoSentElement = document.querySelector('#info-comments-sent')
+    infoSentElement.innerText = rankers[roll_no] ? rankers[roll_no].count : 0
     const commentElement = document.createElement('div')
     commentElement.classList.add('comment')
     const nameElement = document.createElement('div')
@@ -99,8 +108,9 @@ function initListener() {
 
       element.classList.add('selected')
       const roll_no = element.querySelector('.roll').innerText
+      const name = element.querySelector('.name').innerText
       const comments = await fetchCommentsJson(roll_no)
-      renderComments(comments)
+      renderComments(comments, name, roll_no)
     })
   })
 }
@@ -155,7 +165,7 @@ function renderStats() {
   totalCommentsElement.innerText = totalComments
   const ul = document.querySelector('.top10-recieved')
   ul.innerHTML = ''
-  console.log(yearBook);
+
   yearBook.sort((a, b) => b.comments.length - a.comments.length)
   yearBook.slice(0, 10).forEach((student, index) => {
     const li = document.createElement('li')
@@ -171,14 +181,14 @@ function renderStats() {
       })
       li.style.fontWeight = 'bold'
       const comments = await fetchCommentsJson(student.roll_no)
-      renderComments(comments)
+      renderComments(comments, student.name, student.roll_no)
     }
     ul.appendChild(li)
   })
 
   const ul2 = document.querySelector('.top10-sent')
   ul2.innerHTML = ''
-  let rankers = {};
+  rankers = {};
   for (let index = 0; index < yearBook.length; index++) {
     const comments = yearBook[index].comments;
     for (let index2 = 0; index2 < comments.length; index2++) {
@@ -207,7 +217,7 @@ function renderStats() {
       })
       li.style.fontWeight = 'bold'
       const comments = await fetchCommentsJson(element)
-      renderComments(comments)
+      renderComments(comments, rankers[element].name, element)
     }
     ul2.appendChild(li)
   }
